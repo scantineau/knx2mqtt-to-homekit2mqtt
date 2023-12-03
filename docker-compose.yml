@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  knx2mqtt-to-homekit2mqtt:
+    image: scantineau/knx2mqtt-to-homekit2mqtt:${VERSION}
+    build:
+      context: .
+      target: RUN_IMAGE
+    environment:
+      KNX2MQTT_PATH_TO_PROPERTIES: /knx2mqtt/config/knx2mqtt.properties
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./run/knx2mqtt:/knx2mqtt/config/:ro
+      - ./run/knx2mqtt:/knx2mqtt/data/
